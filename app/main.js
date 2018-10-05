@@ -1,8 +1,24 @@
 const inputComponent = {
   template: `<input
-              :placeholder="placeholder"
+              v-bindsjohnwork79:placeholder="placeholder"
+              v-model="input"
+              v-on:keyup.enter="monitorEnterKey"
               class="input is-small" type="text" />`,
-  props: ['placeholder']
+  props: ['placeholder'],
+  data () {
+    return {
+      input: ''
+    }
+  },
+  methods: {
+    monitorEnterKey() {
+      this.$emit('add-note', {
+        note: this.input,
+        timestamp: new Date().toLocaleString()
+      });
+      this.input = '';
+    }
+  }
 }
 
 new Vue({
@@ -12,7 +28,13 @@ new Vue({
     timestamps: [],
     placeholder: 'Enter a note'
   },
+  methods: {
+    addNote(event) {
+      this.notes.push(event.note);
+      this.timestamps.push(event.timestamp);
+    }
+  },
   components: {
     'input-component': inputComponent
   }
-})
+});

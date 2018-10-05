@@ -1,5 +1,8 @@
 html, body {
   height: 100%;
+  border-style: solid;
+  border-width: thick;
+  border-color: #5e72e4;
 }
 
 #app {

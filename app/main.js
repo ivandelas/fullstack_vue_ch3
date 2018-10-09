@@ -1,6 +1,6 @@
 const inputComponent = {
   template: `<input
-              v-bindsjohnwork79:placeholder="placeholder"
+              v-bind:placeholder="placeholder"
               v-model="input"
               v-on:keyup.enter="monitorEnterKey"
               class="input is-small" type="text" />`,
